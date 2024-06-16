@@ -1,6 +1,6 @@
-#include <unistd.h>
+#include "ft_printf.h"
 
-void	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
@@ -10,5 +10,5 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
-	write(1, "\n", 1);
+	return (i);
 }

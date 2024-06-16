@@ -1,8 +1,6 @@
-#include <unistd.h>
+#include "ft_printf.h"
 
-int	ft_putchar(int c, int i)
+int	ft_putchar(int c)
 {
-	write(1, &c, 1);
-	return i + 1;
-
+	return (write(1, &c, 1));
 }

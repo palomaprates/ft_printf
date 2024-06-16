@@ -3,44 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pprates- <pprates-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paloma <paloma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:51:51 by pprates-          #+#    #+#             */
-/*   Updated: 2024/06/12 12:19:02 by pprates-         ###   ########.fr       */
+/*   Updated: 2024/06/16 09:50:15 by paloma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
-void	ft_printf(char *str, ...)
+int	ft_printf(char *str, ...)
 {
 	va_list	args;
-	int	i;
-	i = 0;
+	int	size;
+
+	size = 0;
 	va_start(args, str);
 
-	while (str[i])
+	while (*str)
 	{
-		if(str[i] == '%' && str[i + 1] == 's')
-			ft_putstr(va_arg(args, char *));
-		if(str[i] == '%' && str[i + 1] == 'c')
-			ft_putchar(va_arg(args, char));
-		if(str[i] == '%' && str[i + 1] == 'd' || str[i] == '%' && str[i + 1] == 'i')
-			ft_putnbr(va_arg(args, int));
-		if(str[i] == '%' && str[i + 1] == 'u')
-			ft_putnbr_u(va_arg(args, unsigned int));
-		if(str[i] == '%' && str[i + 1] == 'x' || str[i] == '%' && str[i + 1] == 'X')
-			ft_hexa(va_arg(args, unsigned int), str[i + 1]);
-		i++;
+		if((*str == '%' && *(str + 1) == 's') && str++)
+			size += ft_putstr(va_arg(args, char *));
+		else if((*str == '%' && *(str + 1) == 'c') && str++)
+			size += ft_putchar(va_arg(args, int));
+		else if (((*str == '%' && *(str + 1) == 'd') ||
+			(*str == '%' && *(str + 1) == 'i')) && str++)
+			size += ft_putnbr(va_arg(args, int));
+		else if ((*str == '%' && *(str + 1) == 'u') && str++)
+			size += ft_putnbr_u(va_arg(args, unsigned int));
+		else if (((*str == '%' && *(str + 1) == 'x') ||
+			(*str == '%' && *(str + 1) == 'X')) && str++)
+			size += ft_hexa(va_arg(args, unsigned int), *str);
+		else if ((*str == '%' && *(str + 1) == 'p') && str++)
+			size += ft_putptr(va_arg(args, unsigned long long));
+		else if ((*str == '%' && *(str + 1) == '%') && str++)
+			size += write(1, "%", 1);
+		else
+			size += write(1, str, 1);
+		str++;
 	}
 	va_end(args);
+	return (size);
 }
 
 int main()
 {
-	printf("%x\n", 1234);
-	ft_printf("%x", 1234);
-
+	printf("tamanho ori:%d\n", printf("nbr: %x\n", 200));
+	printf("tamanho meu:%d\n", ft_printf("nbr: %x\n", 200));
 }

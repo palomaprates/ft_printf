@@ -1,19 +1,22 @@
-#include <unistd.h>
+#include "ft_printf.h"
+#include <stdio.h>
 
-void	ft_putnbr(int nb)
+int	ft_putnbr(int nb)
 {
 	long	nbr;
 	char	c;
+	int	i;
 
+	i = 0;
 	nbr = nb;
 	if (nbr < 0)
 	{
 		nbr = nbr * -1;
-		write(1, "-", 1);
+		i += write(1, "-", 1);
 	}
 	if (nbr >= 10)
-		ft_putnbr(nbr / 10);
+		i += ft_putnbr(nbr / 10);
 	c = nbr % 10 + 48;
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	i += write(1, &c, 1);
+	return (i);
 }
