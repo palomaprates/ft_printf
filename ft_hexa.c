@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hexa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paloma <paloma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pprates- <pprates-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:16:16 by pprates-          #+#    #+#             */
-/*   Updated: 2024/06/16 09:50:05 by paloma           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:44:01 by pprates-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_hexa(unsigned int nbr, char specifier)
+int	ft_hexa(unsigned int nbr, char specifier)
 {
 	int	i;
 

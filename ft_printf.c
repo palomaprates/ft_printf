@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paloma <paloma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pprates- <pprates-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:51:51 by pprates-          #+#    #+#             */
-/*   Updated: 2024/06/16 11:18:01 by paloma           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:47:27 by pprates-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_arg(char *str, int *size, va_list args)
+static void	print_arg(const char *str, int *size, va_list args)
 {
-	if(*str == 's')
+	if (*str == 's')
 		*size += ft_putstr(va_arg(args, char *));
-	else if(*str == 'c')
+	else if (*str == 'c')
 		*size += ft_putchar(va_arg(args, int));
 	else if (*str == 'd' || *str == 'i')
 		*size += ft_putnbr(va_arg(args, int));
@@ -30,11 +30,10 @@ void print_arg(char *str, int *size, va_list args)
 		*size += write(1, "%", 1);
 }
 
-
-int	ft_printf(char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int	size;
+	int		size;
 
 	size = 0;
 	va_start(args, str);

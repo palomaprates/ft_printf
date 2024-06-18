@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pprates- <pprates-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/18 12:23:26 by pprates-          #+#    #+#             */
+/*   Updated: 2024/06/18 13:46:39 by pprates-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_ptr(unsigned long long ptr)
 {
@@ -24,9 +35,9 @@ int	ft_ptr(unsigned long long ptr)
 int	ft_putptr(unsigned long long ptr)
 {
 	int	i;
-	i = 0;
 
-	if(!ptr)
+	i = 0;
+	if (!ptr)
 		i += write(1, "(nil)", 5);
 	else
 	{
