@@ -6,7 +6,7 @@
 /*   By: pprates- <pprates-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:43:29 by pprates-          #+#    #+#             */
-/*   Updated: 2024/06/18 13:43:30 by pprates-         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:17:22 by pprates-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 
 int	ft_printf(const char *str, ...);
 
